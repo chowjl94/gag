@@ -1,4 +1,3 @@
-import Loader from "./Loader";
 import { useState,useEffect,useContext } from "react";
 import { FaveContext } from "../context/Favecontext";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
@@ -38,7 +37,7 @@ const Catotd = () =>{
 
     const getNew = async () =>{
         try{
-            const res = await fetch(`https://cataas.com/cat?json=true`)
+            const res = await fetch(`https://proxy-cat.herokuapp.com/https://cataas.com/cat?json=true`)
             const catData = await res.json()
             setCat(catData['id'])
         }catch(error){

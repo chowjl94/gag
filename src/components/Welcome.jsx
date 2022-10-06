@@ -1,22 +1,20 @@
 import React from "react"
 import { useEffect, useState} from "react";
+import defaultCats from "../utils/constants";
+
 const gridstyle = "min-h-[100px] sm:px-0 sm:min-w-[120px] flex justify-center items-center border-[0.5px] text-sm font-light rounded-2xl"
-
-
 
 const Welcome = () =>{
 
         const [cat, setCatGif] = useState("");
         const fetchCats = async ()=>{
             try{
-                const res = await fetch('https://cataas.com/api/cats?limit=6')
+                const res = await fetch('https://proxy-cat.herokuapp.com/https://cataas.com/api/cats?limit=6')
                 const catdata = await res.json()
                 setCatGif(catdata)
             }catch(error){
                 console.log('Error in fetch ,setting default cats')
-                const res = await fetch('https://cataas.com/api/cats?limit=6')
-                const catdata = await res.json()
-                setCatGif(catdata)
+                setCatGif(defaultCats)
             }
         }
     
